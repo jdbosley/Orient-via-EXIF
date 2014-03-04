@@ -1,26 +1,26 @@
 <?php
-function imageFlip($imgsrc, $mode){
-    $width = imagesx($imgsrc);
-    $height = imagesy($imgsrc);
-    $src_x = 0;
-    $src_y = 0;
-    $src_width = $width;
-    $src_height = $height;
-    switch($mode){
+function imageFlip($i, $m){
+    $width = imagesx($i);
+    $height = imagesy($i);
+    $i_x = 0;
+    $i_y = 0;
+    $i_w = $width;
+    $i_h = $height;
+    switch($m){
         case 1: //vertical
-            $src_y = $height -1;
-            $src_height = -$height;
+            $i_y = $height -1;
+            $i_h = -$height;
         	break;
         case 2: //horizontal
-            $src_x = $width -1;
-            $src_width = -$width;
+            $i_x = $width -1;
+            $i_w = -$width;
         	break;
     }
-    $imgdest = imagecreatetruecolor($width, $height);
-    if(imagecopyresampled($imgdest, $imgsrc, 0, 0, $src_x, $src_y, $width, $height, $src_width, $src_height)){
-        return $imgdest;
+    $newImg = imagecreatetruecolor($width, $height);
+    if(imagecopyresampled($newImg, $i, 0, 0, $i_x, $i_y, $width, $height, $i_w, $i_h)){
+        return $newImg;
     }else{
-    	return $imgsrc;
+    	return $i;
     }
 }
 function orient($img){
