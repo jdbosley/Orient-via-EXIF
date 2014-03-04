@@ -63,7 +63,7 @@ function orient($img){
 		$newImg = imagerotate($newImg, $degrees, -1);
 	}
 	header('Content-type: image/jpeg');
-	imagejpeg($newImg);//return this for new oriented image
+	imagejpeg($newImg);//return this for new oriented image, just outputs result to browser for now.
 	imagedestroy($newImg);
 }
 orient('/path/to/img');
